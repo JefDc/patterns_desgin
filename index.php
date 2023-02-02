@@ -16,37 +16,74 @@ require ('AnimalInterface.php');
 require ('Dog.php');
 require ('Cat.php');
 // Exemple de Factory
-$dog = (new AnimalFactory)->createAnimal('dog');
-echo $dog->makeSound(); // Woof
-
-$cat = (new AnimalFactory)->createAnimal('cat');
-echo $cat->makeSound(); // Meow
+//$dog = (new AnimalFactory)->createAnimal('dog');
+//echo $dog->makeSound(); // Woof
+//
+//$cat = (new AnimalFactory)->createAnimal('cat');
+//echo $cat->makeSound(); // Meow
 
 // Bad
-$badDog = new Dog();
-echo $badDog->makeSound();
+//$badDog = new Dog();
+//echo $badDog->makeSound();
 
 // Pourquoi mauvais ?
 // Si demain, je veux ajouter un nouvel animal, est que j'ai déjà mon algo écrit, je dois modifier mon code.
 // Avec un pattern factory, je rajoute ma classe et j'ai pas besion de modifier mon code !!!
+// Exemple Factory
+//
+//?>
+
+<!--<form action="">-->
+<!--    <label for="animal">Animal</label>-->
+<!--    <input type="text" id="animal" name="animal">-->
+<!--    <button type="submit">send</button>-->
+<!--</form>-->
+<!---->
+<?php
+//if ($_GET) {
+//    $animal = (new AnimalFactory)->createAnimal($_GET['animal']);
+//    if ($animal) {
+//        echo $animal->makeSound();
+//    } else {
+//        echo 'animal not found';
+//    }
+//}
+
+// Abstract Factory
+require ('ShapeFactory.php');
+require ('ShapeInterface.php');
+require ('CircleFactory.php');
+require ('Circle.php');
+require ('SquareFactory.php');
+require ('Square.php');
+require ('ColorInterface.php');
+require ('ColorFactory.php');
+require ('Red.php');
+require ('RedFactory.php');
+require ('Blue.php');
+require ('BlueFactory.php');
+require ('Green.php');
+require ('GreenFactory.php');
+require ('AbstractFactoryExample.php');
+
+
+//$shape = AbstractFactoryExample::main('circle', 'red');
+//echo $shape;
+// Avec le factory simple nous pouvons pas utilisé plusieur objet.
 // Exemple
-
-if ($_GET) {
-    $animal = (new AnimalFactory)->createAnimal($_GET['animal']);
-}
 ?>
-
 <form action="">
-    <label for="animal">Animal</label>
-    <input type="text" id="animal" name="animal">
+    <label for="draw">Draw</label>
+    <input type="text" id="draw" name="draw" required>
+    <label for="color">Color</label>
+    <input type="text" id="color" name="color" required>
     <button type="submit">send</button>
 </form>
 
 <?php
+
 if ($_GET) {
-    if ($animal) {
-        echo $animal->makeSound();
-    } else {
-        echo 'animal not found';
-    }
+    $shape = AbstractFactoryExample::main($_GET['draw'], $_GET['color']);
 }
+
+
