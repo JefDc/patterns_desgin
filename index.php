@@ -96,54 +96,64 @@ require ('ChocolateCoffee.php');
 // Exemple
 
 ?>
-<form action="">
-    <!--Select coffee -->
-    <label for="coffee">Choice coffee</label>
-    <select name="coffee" id="coffee" required>
-        <option value="" selected disabled>Select ...</option>
-        <option value="simple">Simple</option>
-        <option value="double">Double</option>
-    </select>
-    <!-- Select option 1 -->
-    <label for="milk">Choice milk</label>
-    <select name="milk" id="milk">
-        <option value="" selected disabled>Select ...</option>
-        <option value="true">Yes</option>
-        <option value="false">Non</option>
-    </select>
-    <!-- Select option 2 -->
-    <label for="chocolate">Choice chocolate</label>
-    <select name="chocolate" id="chocolate">
-        <option value="" selected disabled>Select ...</option>
-        <option value="true">Yes</option>
-        <option value="false">Non</option>
-    </select>
-    <button type="submit">Send</button>
-</form>
-
+<!--<form action="">-->
+<!---->
+<!--    <label for="coffee">Choice coffee</label>-->
+<!--    <select name="coffee" id="coffee" required>-->
+<!--        <option value="" selected disabled>Select ...</option>-->
+<!--        <option value="simple">Simple</option>-->
+<!--        <option value="double">Double</option>-->
+<!--    </select>-->
+<!--    -->
+<!--    <label for="milk">Choice milk</label>-->
+<!--    <select name="milk" id="milk">-->
+<!--        <option value="" selected disabled>Select ...</option>-->
+<!--        <option value="true">Yes</option>-->
+<!--        <option value="false">Non</option>-->
+<!--    </select>-->
+<!---->
+<!--    <label for="chocolate">Choice chocolate</label>-->
+<!--    <select name="chocolate" id="chocolate">-->
+<!--        <option value="" selected disabled>Select ...</option>-->
+<!--        <option value="true">Yes</option>-->
+<!--        <option value="false">Non</option>-->
+<!--    </select>-->
+<!--    <button type="submit">Send</button>-->
+<!--</form>-->
+<!---->
 <?php
+//
+//if ($_GET) {
+//    $result = '';
+//    if ($_GET['coffee'] === 'simple') {
+//        $coffee = new SimpleCoffee();
+//    } else {
+//        $coffee = new DoubleCoffee();
+//    }
+//    $result = $coffee->getCost() . "$ " . $coffee->getDescription() . ".\n";;
+//
+//    if (isset($_GET['milk'])) {
+//        if ($_GET['milk']) {
+//            $milkCoffee = new MilkCoffee($coffee);
+//            $result = $milkCoffee->getCost() . "$ " . $milkCoffee->getDescription() . ".\n";
+//        }
+//    }
+//
+//    if (isset($_GET['chocolate'])) {
+//        if ($_GET['chocolate']) {
+//            $chocolateMilkCoffee = new ChocolateCoffee($milkCoffee);
+//            $result = $chocolateMilkCoffee->getCost() . "$ " . $chocolateMilkCoffee->getDescription() . ".\n";
+//        }
+//    }
+//    echo $result;
+//}
 
-if ($_GET) {
-    $result = '';
-    if ($_GET['coffee'] === 'simple') {
-        $coffee = new SimpleCoffee();
-    } else {
-        $coffee = new DoubleCoffee();
-    }
-    $result = $coffee->getCost() . "$ " . $coffee->getDescription() . ".\n";;
+require ('Burger.php');
+require ('BurgerBuilder.php');
 
-    if (isset($_GET['milk'])) {
-        if ($_GET['milk']) {
-            $milkCoffee = new MilkCoffee($coffee);
-            $result = $milkCoffee->getCost() . "$ " . $milkCoffee->getDescription() . ".\n";
-        }
-    }
-
-    if (isset($_GET['chocolate'])) {
-        if ($_GET['chocolate']) {
-            $chocolateMilkCoffee = new ChocolateCoffee($milkCoffee);
-            $result = $chocolateMilkCoffee->getCost() . "$ " . $chocolateMilkCoffee->getDescription() . ".\n";
-        }
-    }
-    echo $result;
-}
+$burger = (new BurgerBuilder(14))
+    ->addPepperoni()
+    ->addLettuce()
+    ->addTomato()
+    ->build();
+var_dump($burger);
