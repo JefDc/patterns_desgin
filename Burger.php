@@ -2,7 +2,7 @@
 
 class Burger
 {
-    protected $size;
+    protected int $size;
     protected bool $cheese = false;
     protected bool $pepperoni = false;
     protected bool $lettuce = false;
