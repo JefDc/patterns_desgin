@@ -148,12 +148,24 @@ require ('ChocolateCoffee.php');
 //    echo $result;
 //}
 
-require ('Burger.php');
-require ('BurgerBuilder.php');
+//require ('Burger.php');
+//require ('BurgerBuilder.php');
+//
+//$burger = (new BurgerBuilder(14))
+//    ->addPepperoni()
+//    ->addLettuce()
+//    ->addTomato()
+//    ->build();
+//var_dump($burger);
 
-$burger = (new BurgerBuilder(14))
-    ->addPepperoni()
-    ->addLettuce()
-    ->addTomato()
-    ->build();
-var_dump($burger);
+require ('ObserverInterface.php');
+require ('Display.php');
+require ('WeatherData.php');
+
+$weatherData = new WeatherData();
+
+$display = new Display();
+$weatherData->attach($display);
+
+$weatherData->setMeasurements(22.5, 60, 1013);
+
